@@ -35,10 +35,11 @@ for body in python_soup.findAll('div',{'class':'course-block__body'}):
     Python_courses.append(title)
 
 R_DataFrame = pd.DataFrame(R_courses, columns=['Tech'])
-R_DataFrame['Language'] = 'R'
+R_DataFrame.insert(0, 'Language', 'R')
+# R_DataFrame['Language'] = 'R'
 
 Python_DataFrame = pd.DataFrame(Python_courses,columns=['Tech'])
-Python_DataFrame['Language'] = 'Python'
+Python_DataFrame.insert(0, 'Language', 'Python')
 
 frames = [R_DataFrame, Python_DataFrame]
 combined = pd.concat(frames)
@@ -49,6 +50,7 @@ text_file = open("CourseTable.txt", "w")
 n = text_file.write(neatTable)
 text_file.close()
 
+combined.to_csv("CourseTable.csv", sep='\t', index=False, header=True)
 
 
 
