@@ -33,17 +33,21 @@ rows = []
 for tr in table_row:
     td = tr.find_all('td')
     row = [tr.text for tr in td]
-    print(row)
     rows.append(row)
 
+for row in rows:
+    date = row[0][6:]
+    row[0] = date
+
 df2 = pd.DataFrame(rows, columns=column)
-print(df2)
-print(tabulate(df2, showindex=False, headers=df2.columns))
 neatTable = tabulate(df2, showindex=False, headers=df2.columns)
 
 text_file = open("TimeTable.txt", "w")
 n = text_file.write(neatTable)
 text_file.close()
+
+df2.to_csv("TimeTable.csv", sep='\t', index=False, header=True)
+
 
 # with open('TimeTable.txt','w+') as outfile:
 
