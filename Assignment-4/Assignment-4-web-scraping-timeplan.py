@@ -47,7 +47,7 @@ def store_table(df):
     n = text_file.write(neatTable)
     text_file.close()
 
-    df.to_csv("TimeTable.csv", sep='\t', index=False, header=True)
+    df.to_csv("TimeTable.csv", index=False, header=True)
 
 
 if __name__ == "__main__":    

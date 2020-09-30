@@ -43,7 +43,7 @@ def concatenate_and_store_dataframes(R_Frame, Python_Frame):
     n = text_file.write(neatTable)
     text_file.close()
 
-    combined.to_csv("CourseTable.csv", sep='\t', index=False, header=True)
+    combined.to_csv("CourseTable.csv", index=False, header=True)
 
 
 if __name__ == "__main__":
