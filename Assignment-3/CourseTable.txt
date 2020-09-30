@@ -1,0 +1,283 @@
+Language    Tech
+----------  -------------------------------------------------------
+R           Introduction to R
+R           Intermediate R
+R           Text Mining with Bag-of-Words in R
+R           Introduction to Portfolio Analysis in R
+R           Credit Risk Modeling in R
+R           Machine Learning with caret in R
+R           Manipulating Time Series Data with xts and zoo in R
+R           Time Series Analysis in R
+R           Financial Trading in R
+R           Importing and Managing Financial Data in R
+R           Case Study: Exploratory Data Analysis in R
+R           Introduction to Importing Data in R
+R           Intermediate Importing Data in R
+R           Data Visualization in R
+R           Introduction to Statistical Modeling in R
+R           Intermediate Statistical Modeling in R
+R           Intermediate Portfolio Analysis in R
+R           Bond Valuation and Analysis in R
+R           Foundations of Inference
+R           Exploratory Data Analysis in R
+R           Correlation and Regression in R
+R           Introduction to Data in R
+R           ARIMA Models in R
+R           Unsupervised Learning in R
+R           Visualizing Geospatial Data in R
+R           Case Studies: Manipulating Time Series Data in R
+R           Object-Oriented Programming with S3 and R6 in R
+R           Sentiment Analysis in R
+R           Visualizing Time Series Data in R
+R           Life Insurance Products Valuation in R
+R           Foundations of Probability in R
+R           Scalable Data Processing in R
+R           Introduction to R for Finance
+R           Intermediate R for Finance
+R           Supervised Learning in R: Classification
+R           String Manipulation with stringr in R
+R           Writing Efficient R Code
+R           Forecasting in R
+R           Tree-Based Models in R
+R           Working with Web Data in R
+R           Quantitative Risk Management in R
+R           Spatial Statistics in R
+R           Data Visualization with lattice in R
+R           Introduction to Spark with sparklyr in R
+R           Multiple and Logistic Regression in R
+R           Inference for Linear Regression in R
+R           Equity Valuation in R
+R           Case Studies: Building Web Applications with Shiny in R
+R           Supervised Learning in R: Regression
+R           Optimizing R Code with Rcpp
+R           Dimensionality Reduction in R
+R           Spatial Analysis with sf and raster in R
+R           Network Analysis in R
+R           Introduction to the Tidyverse
+R           Developing R Packages
+R           Inference for Numerical Data in R
+R           Data Manipulation with data.table in R
+R           Fundamentals of Bayesian Data Analysis in R
+R           Working with Dates and Times in R
+R           Cluster Analysis in R
+R           Inference for Categorical Data in R
+R           Interactive Data Visualization with plotly in R
+R           Visualizing Big Data with Trelliscope in R
+R           Building Dashboards with flexdashboard
+R           Communicating with Data in the Tidyverse
+R           ChIP-seq with Bioconductor in R
+R           Joining Data with data.table in R
+R           Foundations of Functional Programming with purrr
+R           Visualization Best Practices in R
+R           Building Dashboards with shinydashboard
+R           Modeling with Data in the Tidyverse
+R           Human Resources Analytics: Exploring Employee Data in R
+R           Business Process Analytics in R
+R           Working with Data in the Tidyverse
+R           Forecasting Product Demand in R
+R           Machine Learning for Marketing Analytics in R
+R           Case Studies: Network Analysis in R
+R           Hierarchical and Mixed Effects Models in R
+R           Parallel Programming in R
+R           Introduction to Bioconductor in R
+R           Human Resources Analytics: Predicting Employee Churn...
+R           Data Privacy and Anonymization in R
+R           Nonlinear Modeling in R with GAMs
+R           Bayesian Modeling with RJAGS
+R           Structural Equation Modeling with lavaan in R
+R           Differential Expression Analysis with limma in R
+R           Factor Analysis in R
+R           Choice Modeling for Marketing in R
+R           Categorical Data in the Tidyverse
+R           Multivariate Probability Distributions in R
+R           Experimental Design in R
+R           Building Response Models in R
+R           Bayesian Regression Modeling with rstanarm
+R           Intermediate Functional Programming with purrr
+R           Analyzing Survey Data in R
+R           Mixture Models in R
+R           Network Analysis in the Tidyverse
+R           Hyperparameter Tuning in R
+R           Support Vector Machines in R
+R           Interactive Maps with leaflet in R
+R           Analyzing Election and Polling Data in R
+R           A/B Testing in R
+R           RNA-Seq with Bioconductor in R
+R           Analyzing US Census Data in R
+R           Anomaly Detection in R
+R           Dealing With Missing Data in R
+R           Survival Analysis in R
+R           Interactive Data Visualization with rbokeh
+R           Intermediate Interactive Data Visualization with plo...
+R           Machine Learning in the Tidyverse
+R           Predictive Analytics using Networked Data in R
+R           Designing and Analyzing Clinical Trials in R
+R           Single-Cell RNA-Seq with Bioconductor in R
+R           Linear Algebra for Data Science in R
+R           Time Series with data.table in R
+R           Generalized Linear Models in R
+R           Fraud Detection in R
+R           GARCH Models in R
+R           Course Creation at DataCamp
+R           Advanced Dimensionality Reduction in R
+R           Topic Modeling in R
+R           Probability Puzzles in R
+R           Feature Engineering in R
+R           Defensive R Programming
+R           R For SAS Users
+R           Introduction to Text Analysis in R
+R           Survey and Measurement Development in R
+R           Practicing Machine Learning Interview Questions in R
+R           Introduction to TensorFlow in R
+R           Introduction to Natural Language Processing in R
+R           Data Manipulation with dplyr
+R           Market Basket Analysis in R
+R           Introduction to Writing Functions in R
+R           Building Web Applications with Shiny in R
+R           Analyzing Social Media Data in R
+R           Introduction to Data Visualization with ggplot2
+R           Intermediate Data Visualization with ggplot2
+R           Practicing Statistics Interview Questions in R
+R           Joining Data with dplyr
+R           Intermediate Regular Expressions in R
+R           Handling Missing Data with Imputations in R
+R           Cleaning Data in R
+R           Reporting with R Markdown
+R           Introduction to Statistics in R
+R           Introduction to Regression in R
+R           Intermediate Regression in R
+Python      Introduction to Python
+Python      Intermediate Python
+Python      Introduction to Databases in Python
+Python      Interactive Data Visualization with Bokeh
+Python      Python Data Science Toolbox (Part 2)
+Python      Python Data Science Toolbox (Part 1)
+Python      Statistical Thinking in Python (Part 1)
+Python      Statistical Thinking in Python (Part 2)
+Python      Intermediate Importing Data in Python
+Python      Introduction to Importing Data in Python
+Python      pandas Foundations
+Python      Manipulating DataFrames with pandas
+Python      Merging DataFrames with pandas
+Python      Introduction to Data Visualization in Python
+Python      Introduction to Network Analysis in Python
+Python      Supervised Learning with scikit-learn
+Python      Introduction to Deep Learning in Python
+Python      Unsupervised Learning in Python
+Python      Case Study: School Budgeting with Machine Learning i...
+Python      Data Types for Data Science in Python
+Python      Intermediate Network Analysis in Python
+Python      Introduction to Natural Language Processing in Python
+Python      Building Chatbots in Python
+Python      Extreme Gradient Boosting with XGBoost
+Python      Importing and Managing Financial Data in Python
+Python      Manipulating Time Series Data in Python
+Python      Time Series Analysis in Python
+Python      Parallel Programming with Dask in Python
+Python      Introduction to PySpark
+Python      Case Studies in Statistical Thinking
+Python      Visualizing Time Series Data in Python
+Python      Python for R Users
+Python      Introduction to Financial Concepts in Python
+Python      Introduction to Portfolio Risk Management in Python
+Python      Introduction to Linear Modeling in Python
+Python      Introduction to MongoDB in Python
+Python      Machine Learning for Time Series Data in Python
+Python      Customer Analytics and A/B Testing in Python
+Python      Linear Classifiers in Python
+Python      Human Resources Analytics: Predicting Employee Churn...
+Python      Feature Engineering with PySpark
+Python      Machine Learning with Tree-Based Models in Python
+Python      Marketing Analytics: Predicting Customer Churn in Py...
+Python      Introduction to Predictive Analytics in Python
+Python      Advanced Deep Learning with Keras
+Python      Preprocessing for Machine Learning in Python
+Python      Machine Learning for Finance in Python
+Python      Introduction to Python for Finance
+Python      Analyzing Police Activity with pandas
+Python      Intermediate Data Visualization with Seaborn
+Python      Statistical Simulation in Python
+Python      Financial Forecasting in Python
+Python      Python for MATLAB Users
+Python      Visualizing Geospatial Data in Python
+Python      Biomedical Image Analysis in Python
+Python      Building Recommendation Engines with PySpark
+Python      Web Scraping in Python
+Python      Working with Geospatial Data in Python
+Python      Image Processing with Keras in Python
+Python      Advanced NLP with spaCy
+Python      Supply Chain Analytics in Python
+Python      Analyzing Social Media Data in Python
+Python      Working with the Class System in Python
+Python      Fraud Detection in Python
+Python      Customer Segmentation in Python
+Python      Intermediate Predictive Analytics in Python
+Python      Analyzing US Census Data in Python
+Python      Big Data Fundamentals with PySpark
+Python      Dimensionality Reduction in Python
+Python      Working with Dates and Times in Python
+Python      Designing Machine Learning Workflows in Python
+Python      Software Engineering for Data Scientists in Python
+Python      Writing Efficient Python Code
+Python      Introduction to Data Science in Python
+Python      Introduction to Data Visualization with Matplotlib
+Python      Feature Engineering for Machine Learning in Python
+Python      Creating Robust Workflows in Python
+Python      Foundations of Probability in Python
+Python      Writing Efficient Code with pandas
+Python      Python for Spreadsheet Users
+Python      Improving Your Data Visualizations in Python
+Python      Cluster Analysis in Python
+Python      AI Fundamentals
+Python      Analyzing Marketing Campaigns with pandas
+Python      Machine Learning with PySpark
+Python      Introduction to Spark SQL in Python
+Python      Introduction to TensorFlow in Python
+Python      Model Validation in Python
+Python      Hyperparameter Tuning in Python
+Python      Introduction to Data Visualization with Seaborn
+Python      Ensemble Methods in Python
+Python      Exploratory Data Analysis in Python
+Python      Generalized Linear Models in Python
+Python      Introduction to Deep Learning with PyTorch
+Python      Writing Functions in Python
+Python      Unit Testing for Data Science in Python
+Python      Analyzing IoT Data in Python
+Python      Practicing Coding Interview Questions in Python
+Python      Practicing Statistics Interview Questions in Python
+Python      Introduction to Deep Learning with Keras
+Python      Cleaning Data with PySpark
+Python      Experimental Design in Python
+Python      Feature Engineering for NLP in Python
+Python      Streamlined Data Ingestion with pandas
+Python      Winning a Kaggle Competition in Python
+Python      Sentiment Analysis in Python
+Python      Command Line Automation in Python
+Python      Image Processing in Python
+Python      Regular Expressions in Python
+Python      ARIMA Models in Python
+Python      Dealing with Missing Data in Python
+Python      Recurrent Neural Networks for Language Modeling in P...
+Python      Introduction to AWS Boto in Python
+Python      Machine Translation in Python
+Python      Spoken Language Processing in Python
+Python      Building Data Engineering Pipelines in Python
+Python      Introduction to Portfolio Analysis in Python
+Python      Credit Risk Modeling in Python
+Python      Machine Learning for Marketing in Python
+Python      Practicing Machine Learning Interview Questions in P...
+Python      Introduction to Data Engineering
+Python      Pandas Joins for Spreadsheet Users
+Python      Quantitative Risk Management in Python
+Python      Intermediate Python for Finance
+Python      Natural Language Generation in Python
+Python      Predicting CTR with Machine Learning in Python
+Python      Data Manipulation with pandas
+Python      GARCH Models in Python
+Python      Joining Data with pandas
+Python      Introduction to Airflow in Python
+Python      Market Basket Analysis in Python
+Python      Streaming Data with AWS Kinesis and Lambda
+Python      Cleaning Data in Python
+Python      Object-Oriented Programming in Python
+Python      Introduction to Statistics in Python

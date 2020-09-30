@@ -10,6 +10,10 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
+import plotly.figure_factory as ff
+from tabulate import tabulate
+
+
 
 url = 'http://timeplan.uit.no/emne_timeplan.php?sem=20h&module%5B%5D=BED-2056-1&View=list'
 respnse = requests.get(url)
@@ -17,28 +21,35 @@ respnse = requests.get(url)
 soup = BeautifulSoup(respnse.text, 'html.parser')
 title = soup.find(id="maincontent").text
 table_row = soup.findAll("tbody")
-coulumns = soup.find('tr', {'class': 'table-active'}).text
-text = coulumns.split('\n')
-print(text)
-l = []
+column = soup.find('tr', {'class': 'table-active'}).text
+column.strip()
+column.strip("\n")
+column = column.split('\n')
+
+while("" in column) : 
+    column.remove("") 
+
+rows = []
 for tr in table_row:
     td = tr.find_all('td')
     row = [tr.text for tr in td]
-    l.append(row)
-print(l)
+    rows.append(row)
+
+for row in rows:
+    date = row[0][6:]
+    row[0] = date
+
+df2 = pd.DataFrame(rows, columns=column)
+neatTable = tabulate(df2, showindex=False, headers=df2.columns)
+
+text_file = open("TimeTable.txt", "w")
+n = text_file.write(neatTable)
+text_file.close()
+
+df2.to_csv("TimeTable.csv", sep='\t', index=False, header=True)
 
 
-# liste = []
+# with open('TimeTable.txt','w+') as outfile:
 
-
-""" l = []
-for tr in table_rows:
-    td = tr.find_all('td')
-    row = [tr.text for tr in td]
-    l.append(row)
-pd.DataFrame(l, columns=["A", "B", ...]) """
-
-""" for i in range (34,37):
-    diction = {}
-    ids = "Timeplan for BED-2056-1 i uke " + str(i)
-    print(soup.find(title=ids)) """
+#     df2.to_string(outfile,columns=column)
+    

@@ -8,27 +8,50 @@ Your final data frame should have two variables, one for “tech” and one for 
 """
 
 import requests
-import urllib.request
-import time
 from bs4 import BeautifulSoup   
 import json
-from selenium import webdriver
 import pandas as pd
+from tabulate import tabulate
 
-from pandas.io.json import json_normalize
+R_courses = []
+Python_courses = []
 
-# Set the URL you want to webscrape from
-url = 'https://learn.datacamp.com/courses/tech:r'
+R_url = 'https://www.datacamp.com/courses/tech:r'
+Python_url = 'https://www.datacamp.com/courses/tech:python'
 
-page  = requests.get(url).content
-data = json.loads(page.decode('utf-8'))
-print(data)
+page = requests.get(R_url)
+soup = BeautifulSoup(page.content, 'html.parser')
 
-# data = json_normalize(data)
-# df = pd.DataFrame(data)
-# soup = BeautifulSoup(page, 'html.parser')
-# books = soup.find_all('div',attrs={"class":"courses__explore-list js-async-bookmarking row"})
-# print(books)
+for body in soup.findAll('div',{'class':'course-block__body'}):
+    title = body.find('h4', {'class':'course-block__title'}).text
+    R_courses.append(title)
+
+
+python_page = requests.get(Python_url)
+python_soup = BeautifulSoup(python_page.content, 'html.parser')
+
+for body in python_soup.findAll('div',{'class':'course-block__body'}):
+    title = body.find('h4', {'class':'course-block__title'}).text
+    Python_courses.append(title)
+
+R_DataFrame = pd.DataFrame(R_courses, columns=['Tech'])
+R_DataFrame.insert(0, 'Language', 'R')
+# R_DataFrame['Language'] = 'R'
+
+Python_DataFrame = pd.DataFrame(Python_courses,columns=['Tech'])
+Python_DataFrame.insert(0, 'Language', 'Python')
+
+frames = [R_DataFrame, Python_DataFrame]
+combined = pd.concat(frames)
+
+neatTable = tabulate(combined, showindex=False, headers=combined.columns)
+
+text_file = open("CourseTable.txt", "w")
+n = text_file.write(neatTable)
+text_file.close()
+
+combined.to_csv("CourseTable.csv", sep='\t', index=False, header=True)
+
 
 
 
