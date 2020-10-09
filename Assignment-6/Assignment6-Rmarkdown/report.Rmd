@@ -1,0 +1,16 @@
+---
+title: "Is there a surge of bankruptcies due to Covid-19?"
+author: "Helle Sandsdalen"
+date: "8 10 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Sys.setlocale("LC_TIME", "English")
+```
+The purpose of this paper is to see if covid-19 caused a higher rate of bankruptcies in 2020 compared to the same months in 2019. The data is gathered from https://w2.brreg.no/kunngjoring/. The result is divided such that you'll see the result for each county in Norway. 
+```{r, echo=FALSE,out.width="30%", out.height="20%",fig.cap="Cumulative number of bankruptcies in counties in Norway in 2019 and 2020",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("Oslo.png","Troms og Finnmark.png","Agder.png","Trøndelag.png","Vestfold og Telemark.png","Vestland.png", "Viken.png", "Innlandet.png", "Møre og Romsdal.png", "Nordland.png", "Rogaland.png"))
+``` 
+The grapsh above shows the cumulative number of bankruptcies per month in a year and per county. It shows all months in 2019 compared to the months from January to September in 2019. From the graphs it is possible to see that covid-19 have not had any immediately impact on number of bankruptcies during 2020. Although we don't see any significant raise in bankruptcies so far, the effect from covid-19 may not come until 2021. It will be interesting to see if we see a significant raise in bankruptcies for the next half year. 
