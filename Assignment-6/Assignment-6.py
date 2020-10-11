@@ -7,7 +7,10 @@ import pandas as pd
 import re
 import calendar
 
+# List of conties in Norway and Svalbard
 county = ["Troms og Finnmark", "Nordland", "Trøndelag", "Møre og Romsdal", "Vestland", "Rogaland", "Agder", "Vestfold og Telemark", "Viken", "Oslo", "Innlandet","Svalbard","Utenlands"]
+
+# Months in a year in numeric
 months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
 
 def daysInEachMonth(year):
@@ -18,18 +21,16 @@ def daysInEachMonth(year):
 
     return days
 
-def scrape(days, month, counties, year):
+def scrapeWeb(days, month, counties, year):
     '''
-        Method that scrapes all the months in the year,
-        and count the number of banckrupcies in each month.
-        Places this in a dictionary with month as key
-        and number of bankrupcies as value. 
+        Method that scrapes each month in the year. 
+        A new url is generate for all months in the year. 
     '''
 
     # Set empty dictionary
     result = {year:{}}
 
-    # Go through all months in the month list
+    # Go through all months in the months list
     for i in range(len(month)):
 
         # Format a new url based on which month, number of days in the month and year
@@ -50,18 +51,21 @@ def scrape(days, month, counties, year):
             if tr.text.strip() in counties:
                 curr_month = None
 
-                # Add new country to the result
+                # If a county is set - update the value in the dictionary
                 if curent_county != None:
                     curr_month = {i+1:counter}
                     result[year][curent_county].update(curr_month)
 
                 counter = 0
+                # If the county is not located in the result dictionary - add key to dictionary
                 curent_county = tr.text.strip()
                 if curent_county not in result[year]:
                     result[year][curent_county] = {}
             else:
-                # Check if the row contains "Konkursåpning" - add one to the counter
+                # If the value is not a county
                 text = tr.text.strip()
+
+                # Check if the value is "Konkuråpning" if it is - add another to the counter 
                 if "Konkursåpning" in text:
                     counter += 1
 
@@ -75,25 +79,29 @@ def calculateCumulative(liste, year):
         if(index == 0):
             continue
         else:
-            # Add the sum of the elemet before 
+            # Add the sum of the previous element
             liste[index] = i + liste[index - 1]
     
     return liste
 
-def make_dataFrame(resultat_2019, resultat_2020):
+def makeDataFrameAndPlotFigure(resultat_2019, resultat_2020):
     ''' Method to make the two data frames and plot the results for all conties '''
+
+    # All months in 2019
     monts = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun','Jul','Aug', 'Sep', 'Oct','Nov', 'Dec']
+
+    # Only the nine first months in 2020
     monts_2020 = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun','Jul','Aug', 'Sep']
 
-    # One dataframe for both years
+    # Dataframe for 2019 with result of 12 months
     df_2019 = pd.DataFrame(columns=['2019'])
     df_2019['Months'] = monts
-    df_2020 = pd.DataFrame(columns=['2020'])
 
-    # Only nine first months in 2020 dataframe
+    # Dataframe for 2020 - only nine first months
+    df_2020 = pd.DataFrame(columns=['2020'])
     df_2020['Months'] = monts[:9] #.dt.strftime('%b')
 
-    # Go through all counties in the county list
+    # Go through all names in the county list
     for i in county:
         counter = 1
         liste = []
@@ -122,26 +130,29 @@ def make_dataFrame(resultat_2019, resultat_2020):
         df_2019['2019'] = liste
         df_2020['2020'] = liste_2020[:9]
 
-        # Plot the line of 2019
+        # Plot the line of 2020
         ax = df_2020.plot(x = 'Months', y = '2020')
 
-        # Plot the line for 2020 i same plot
+        # Plot the line for 2019 i same plot
         df_2019.plot(x = 'Months', y = '2019',ax=ax)
 
-        # Set limit for x ac
-        # plt.xlim(0,12)
+        # Set limit for x and y
         plt.xticks(list(range(0,12)), monts)
         plt.ylim([0,1100])
         plt.show()
+
+        # Set title of figure
         plt.title(i)
+
+        # Save figure
         plt.savefig(i)
         
 
 def run():
     days = daysInEachMonth(2019)
-    resultat_2019 = scrape(days, months, county, 2019)
-    resultat_2020 = scrape(days, months, county, 2020)
-    make_dataFrame(resultat_2019, resultat_2020)
+    resultat_2019 = scrapeWeb(days, months, county, 2019)
+    resultat_2020 = scrapeWeb(days, months, county, 2020)
+    makeDataFrameAndPlotFigure(resultat_2019, resultat_2020)
 
 if __name__ == "__main__":
     run()
