@@ -37,10 +37,10 @@ def scrapeWeb(days, month, counties, year):
         url = ("https://w2.brreg.no/kunngjoring/kombisok.jsp?datoFra=01.{}.{}&datoTil={}.{}.{}&id_region=0&id_niva1=51&id_niva2=56&id_bransje1=0").format(month[i], year,days[i], month[i], year) 
         
         # Send get request to the formatted url
-        r = requests.get(url)
+        response = requests.get(url)
 
         # Parse the response text
-        soup = BeautifulSoup(r.text, 'html.parser')
+        soup = BeautifulSoup(response.text, 'html.parser')
         curent_county = None
         counter = 0
 
@@ -150,8 +150,9 @@ def makeDataFrameAndPlotFigure(resultat_2019, resultat_2020):
 
 def run():
     days = daysInEachMonth(2019)
+    days_2020 = daysInEachMonth(2020)
     resultat_2019 = scrapeWeb(days, months, county, 2019)
-    resultat_2020 = scrapeWeb(days, months, county, 2020)
+    resultat_2020 = scrapeWeb(days_2020, months, county, 2020)
     makeDataFrameAndPlotFigure(resultat_2019, resultat_2020)
 
 if __name__ == "__main__":
