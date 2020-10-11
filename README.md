@@ -1,4 +1,4 @@
-# Assignment-3-5-Data-Science
+# Assignments-Data-Science
 
 ## Assignment 3 - web scraping DataCamp
 
@@ -26,5 +26,8 @@ http://ansatte.uit.no/oystein.myrland/BED2056/H2020/readSSBsAPI.R
 Recode the variable “region” into tidy names, and make a single plot of “roomcap” for all counties, over time, including the “Whole_country”.
 
 - Assignment 5 is written in R, using the code given from class. The files are located under the folder "Assignment 5".
+
+## Assignment 6 
+Assignment 6 is located under assignment 6 folder.
 
 
