@@ -28,6 +28,6 @@ Recode the variable “region” into tidy names, and make a single plot of “r
 - Assignment 5 is written in R, using the code given from class. The files are located under the folder "Assignment 5".
 
 ## Assignment 6 
-Assignment 6 is located under assignment 6 folder.
+Assignment 6 is written in python and knitted into HTML using Rmarkdown. The files are located under assignment 6 folder.
 
 
