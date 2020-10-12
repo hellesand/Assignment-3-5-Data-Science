@@ -23,14 +23,16 @@ def daysInEachMonth(year):
 
 def scrapeWeb(days, month, counties, year):
     '''
-        Method that scrapes each month in the year. 
-        A new url is generate for all months in the year. 
+        Method that scrapes all months in a year. 
+        A new url is generate for each months in the year. 
     '''
 
-    # Set empty dictionary
-    result = {year:{}}
+    # Dictionary with dictionary that will hold the result
+    # of all counties and the number of bankrupcies in each
+    # month in a year
+    banckrupcies = {year:{}}
 
-    # Go through all months in the months list
+    # Loop as many times as it is months
     for i in range(len(month)):
 
         # Format a new url based on which month, number of days in the month and year
@@ -41,26 +43,28 @@ def scrapeWeb(days, month, counties, year):
 
         # Parse the response text
         soup = BeautifulSoup(response.text, 'html.parser')
-        curent_county = None
+
+        # Initalize non county and zero counter
+        county = None
         counter = 0
 
         # Locate all tr elements in the response
         for tr in soup.findAll('tr'):
 
-            # Check if the value one of the countes
+            # Check if the value is a county
             if tr.text.strip() in counties:
-                curr_month = None
+                month = None
 
-                # If a county is set - update the value in the dictionary
-                if curent_county != None:
-                    curr_month = {i+1:counter}
-                    result[year][curent_county].update(curr_month)
+                # If a county is set - update the values in the dictionary
+                if county != None:
+                    month = {i+1:counter}
+                    banckrupcies[year][county].update(month)
 
                 counter = 0
                 # If the county is not located in the result dictionary - add key to dictionary
-                curent_county = tr.text.strip()
-                if curent_county not in result[year]:
-                    result[year][curent_county] = {}
+                county = tr.text.strip()
+                if county not in banckrupcies[year]:
+                    banckrupcies[year][county] = {}
             else:
                 # If the value is not a county
                 text = tr.text.strip()
@@ -69,7 +73,7 @@ def scrapeWeb(days, month, counties, year):
                 if "Konkursåpning" in text:
                     counter += 1
 
-    return result
+    return banckrupcies
 
 def calculateCumulative(liste, year):
     ''' Calculate cumulative '''
