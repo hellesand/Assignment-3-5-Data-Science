@@ -2,12 +2,10 @@ import numpy as np
 import requests
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
-import re
 import pandas as pd
-import re
 import calendar
 
-# List of conties in Norway and Svalbard
+# List of conties
 counties = ["Troms og Finnmark", "Nordland", "Trøndelag", "Møre og Romsdal", "Vestland", "Rogaland", "Agder", "Vestfold og Telemark", "Viken", "Oslo", "Innlandet","Svalbard","Utenlands"]
 
 # Months in a year in numeric
@@ -36,17 +34,22 @@ def parse_rows(response, i, results):
 
         # Check if row value is a county
         if tr.text.strip() in counties:
+
+            # Clean month variable
             month = None
 
             # If a county is set - update the values in the dictionary
             if county != None:
+
                 # Set current month
                 month = {i+1:counter}
+
+                # Update dictionary - add month as key
                 results[county].update(month)
 
             counter = 0
-            # If the county is not located in the result dictionary - add key to dictionary
             county = tr.text.strip()
+            # If the county is not located in the result dictionary - add key to dictionary
             if county not in results:
                 results[county] = {}
         else:
@@ -109,11 +112,11 @@ def makeDataFrameAndPlotFigure(resultat_2019, resultat_2020):
         liste = []
         liste_2020 = []
 
-        # Append the result for all 12 monts
+        # Append the result for all 12 monts for both years
         while counter < 13:
 
-            # Check if the month has any bankruptcies
             try:
+                # Check if the month has any bankruptcies
                 liste.append(resultat_2019[i][counter])
             except:
                 # If the month had no bankruptcies add a zero to the list
