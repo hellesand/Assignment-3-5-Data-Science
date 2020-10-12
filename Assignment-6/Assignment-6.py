@@ -21,7 +21,7 @@ def daysInEachMonth(year):
 
 def parse_rows(response, i, results):
     '''
-        Method that parses the response text and evaluates each row
+        Method that parses the response text and evaluates each element
     '''
     # Parse the response text
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -34,24 +34,21 @@ def parse_rows(response, i, results):
 
         # Check if row value is a county
         if tr.text.strip() in counties:
-
-            # Clean month variable
             month = None
 
-            # If a county is set - update the values in the dictionary
+            # Store result of the month to the county dictionary
             if county != None:
+                month = i+1 
+                results[county][month] = counter
 
-                # Set current month
-                month = {i+1:counter}
-
-                # Update dictionary - add month as key
-                results[county].update(month)
-
+            # Set counter zero for next county
             counter = 0
             county = tr.text.strip()
-            # If the county is not located in the result dictionary - add key to dictionary
+
+            # If the county is not in the result dictionary - add key to dictionary
             if county not in results:
                 results[county] = {}
+
         else:
             # If the value is not a county
             text = tr.text.strip()
