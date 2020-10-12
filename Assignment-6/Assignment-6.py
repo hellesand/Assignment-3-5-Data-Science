@@ -8,7 +8,7 @@ import re
 import calendar
 
 # List of conties in Norway and Svalbard
-county = ["Troms og Finnmark", "Nordland", "Trøndelag", "Møre og Romsdal", "Vestland", "Rogaland", "Agder", "Vestfold og Telemark", "Viken", "Oslo", "Innlandet","Svalbard","Utenlands"]
+counties = ["Troms og Finnmark", "Nordland", "Trøndelag", "Møre og Romsdal", "Vestland", "Rogaland", "Agder", "Vestfold og Telemark", "Viken", "Oslo", "Innlandet","Svalbard","Utenlands"]
 
 # Months in a year in numeric
 months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
@@ -21,59 +21,57 @@ def daysInEachMonth(year):
 
     return days
 
-def scrapeWeb(days, month, counties, year):
+def parse_rows(response, i, results):
+    '''
+        Method that parses the response text and evaluates each row
+    '''
+    # Parse the response text
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    county = None
+    counter = 0
+
+    # Find all tr elements in the response
+    for tr in soup.findAll('tr'):
+
+        # Check if row value is a county
+        if tr.text.strip() in counties:
+            month = None
+
+            # If a county is set - update the values in the dictionary
+            if county != None:
+                # Set current month
+                month = {i+1:counter}
+                results[county].update(month)
+
+            counter = 0
+            # If the county is not located in the result dictionary - add key to dictionary
+            county = tr.text.strip()
+            if county not in results:
+                results[county] = {}
+        else:
+            # If the value is not a county
+            text = tr.text.strip()
+
+            # Check if the value is "Konkuråpning" if it is - add another to the result
+            if "Konkursåpning" in text:
+                counter += 1
+
+def scrapeWeb(days, year, results):
     '''
         Method that scrapes all months in a year. 
         A new url is generate for each months in the year. 
     '''
-
-    # Dictionary with dictionary that will hold the result
-    # of all counties and the number of bankrupcies in each
-    # month in a year
-    banckrupcies = {year:{}}
-
     # Loop as many times as it is months
-    for i in range(len(month)):
+    for i in range(len(months)):
 
         # Format a new url based on which month, number of days in the month and year
-        url = ("https://w2.brreg.no/kunngjoring/kombisok.jsp?datoFra=01.{}.{}&datoTil={}.{}.{}&id_region=0&id_niva1=51&id_niva2=56&id_bransje1=0").format(month[i], year,days[i], month[i], year) 
+        url = ("https://w2.brreg.no/kunngjoring/kombisok.jsp?datoFra=01.{}.{}&datoTil={}.{}.{}&id_region=0&id_niva1=51&id_niva2=56&id_bransje1=0").format(months[i], year,days[i], months[i], year) 
         
         # Send get request to the formatted url
         response = requests.get(url)
 
-        # Parse the response text
-        soup = BeautifulSoup(response.text, 'html.parser')
-
-        # Initalize non county and zero counter
-        county = None
-        counter = 0
-
-        # Locate all tr elements in the response
-        for tr in soup.findAll('tr'):
-
-            # Check if the value is a county
-            if tr.text.strip() in counties:
-                month = None
-
-                # If a county is set - update the values in the dictionary
-                if county != None:
-                    month = {i+1:counter}
-                    banckrupcies[year][county].update(month)
-
-                counter = 0
-                # If the county is not located in the result dictionary - add key to dictionary
-                county = tr.text.strip()
-                if county not in banckrupcies[year]:
-                    banckrupcies[year][county] = {}
-            else:
-                # If the value is not a county
-                text = tr.text.strip()
-
-                # Check if the value is "Konkuråpning" if it is - add another to the counter 
-                if "Konkursåpning" in text:
-                    counter += 1
-
-    return banckrupcies
+        parse_rows(response, i, results)
 
 def calculateCumulative(liste, year):
     ''' Calculate cumulative '''
@@ -103,10 +101,10 @@ def makeDataFrameAndPlotFigure(resultat_2019, resultat_2020):
 
     # Dataframe for 2020 - only nine first months
     df_2020 = pd.DataFrame(columns=['2020'])
-    df_2020['Months'] = monts[:9] #.dt.strftime('%b')
+    df_2020['Months'] = monts[:9] 
 
     # Go through all names in the county list
-    for i in county:
+    for i in counties:
         counter = 1
         liste = []
         liste_2020 = []
@@ -116,12 +114,12 @@ def makeDataFrameAndPlotFigure(resultat_2019, resultat_2020):
 
             # Check if the month has any bankruptcies
             try:
-                liste.append(resultat_2019[2019][i][counter])
+                liste.append(resultat_2019[i][counter])
             except:
                 # If the month had no bankruptcies add a zero to the list
                 liste.append(0)
             try:
-                liste_2020.append(resultat_2020[2020][i][counter])
+                liste_2020.append(resultat_2020[i][counter])
             except:
                 liste_2020.append(0)
             counter += 1
@@ -143,21 +141,23 @@ def makeDataFrameAndPlotFigure(resultat_2019, resultat_2020):
         # Set limit for x and y
         plt.xticks(list(range(0,12)), monts)
         plt.ylim([0,1100])
-        plt.show()
 
         # Set title of figure
         plt.title(i)
 
         # Save figure
         plt.savefig(i)
-        
 
 def run():
+    # Dictionaries for storing the results of each year
+    banckrupcies_2019 = {}
+    banckrupcies_2020 = {}  
+
     days = daysInEachMonth(2019)
     days_2020 = daysInEachMonth(2020)
-    resultat_2019 = scrapeWeb(days, months, county, 2019)
-    resultat_2020 = scrapeWeb(days_2020, months, county, 2020)
-    makeDataFrameAndPlotFigure(resultat_2019, resultat_2020)
+    scrapeWeb(days, 2019, banckrupcies_2019)
+    scrapeWeb(days_2020, 2020, banckrupcies_2020)
+    makeDataFrameAndPlotFigure(banckrupcies_2019, banckrupcies_2020)
 
 if __name__ == "__main__":
     run()
