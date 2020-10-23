@@ -1,0 +1,18 @@
+---
+title: "Gender analyzis of children born in US in 2018 and 2019"
+author: "Helle Sandsdalen"
+date: "23 10 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+Sys.setlocale("LC_TIME", "English")
+```
+This results in this paper is generated from the data located at "https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm". The datasets explored are 2018 and 2019. From these data we will see the ratio of males and females born in the US in 2018 and 2019. We look at the ratio of males and females, the average weight, and the ratio of females vs males born by day of birth.
+
+```{r, echo=FALSE,out.width="60%", out.height="60%",fig.cap="Cumulative number of bankruptcies in counties in Norway in 2019 and 2020",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("../days.png","../averageweight.png","../ratiogender.png"))
+``` 
+
+From the graphs above, we clearly see in both year, the number of males born is higher than the number of females. The pattern is the same in both years. From the graph showing ratio of gender per day we see that there is almost the same ratio in 2018 and 2019 of boys on the different days. 
