@@ -11,11 +11,11 @@ Sys.setlocale("LC_TIME", "English")
 ```
 This results in this paper is generated from the data located at "https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm". The data sets explored are 2018 and 2019. From these data we will see the ratio of males and females born in the US in 2018 and 2019. We look at the ratio of males and females, the average weight, and the ratio of females vs males born by day of birth.
 
-```{r, echo=FALSE,out.width="60%", out.height="60%",fig.cap="Cumulative number of bankruptcies in counties in Norway in 2019 and 2020",fig.show='hold',fig.align='center'}
+```{r, echo=FALSE,out.width="60%", out.height="60%", fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("../days.png","../averageweight.png","../ratiogender.png"))
 ``` 
 The ratio in percentage is calculated by: #of males/ (#males + #females) * 100%.
 
-From the graphs above, we see the same pattern for both years. The ratio of males born are higher than the ratio of women in both years. We also see that the weight for males is somehow steady for both years, while the average weight of the females have a small decrease from 2018 to 2019. When it comes to ratio of gender, depending on the day of birth we see that the ratio of males born for each day in both 2018 and 2019 is higher than females in the same years. It is almost the same ratio in for all days, but we see that the ratio of females born each day has decreased from 2018. 
-From these results we can conclude that there is born more males than females the whole year. If the next years follows the same trend in decreasing ratio of females born, it could lead to overweight of males. 
+From the graphs above, we see the same pattern for both years. The ratio of males born are higher than the ratio of women in both years. We also see that the weight for males is somehow steady for both years, while the average weight of the females have a small decrease from 2018 to 2019. When it comes to ratio of gender, depending on the day of birth we see that the ratio of males born for each day in both 2018 and 2019 is higher than females in the same years. It is almost the same ratio for all days, but we see that the ratio of females born each day has decreased from 2018. 
+From these results we can conclude that there is born more males than females both years, throughout the whole year. If the next years follows the same trend in decreasing ratio of females born, it could lead to overweight of males. 
 
