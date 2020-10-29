@@ -6,4 +6,4 @@ and place the text files in the same directory as "Assignment7.py"
 Run the python file:
     $ python3 Assignment7.py
 
-The program will produce three images, "averageweight.png", "days.pgn" and "ratiogender.pgn"
+The program will produce three images, "averageweight.png", "days.png" and "ratiogender.png"
